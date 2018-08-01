@@ -1,0 +1,6 @@
+<template>
+  <ul>
+      <li>${data.a}</li>
+      <li>${data.b}</li>
+  </ul>
+</template>

@@ -1,0 +1,25 @@
+
+
+<script>
+  import * as subrtpl from './index-sub.rtpl';
+  import * as plugin from './plugin';
+  var list = [1,2,3]
+</script>
+<template>
+  <div>
+    <span>${data.a}</span><span>${data.b}</span>
+    <div>${plugin.add(1,2)}</div>
+    ${
+      subrtpl.render({
+        data
+      })
+    }
+    ${
+      list.map(function(item){
+        return <template>
+          <div>${item}</div>
+        </template>
+      }).join('\n')
+    }
+  </div>
+</template>
