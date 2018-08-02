@@ -1,14 +1,23 @@
 
 
 <script>
+  import './index.less';
   import * as subrtpl from './index-sub.rtpl';
   import * as plugin from './plugin';
   var list = [1,2,3]
+  export function init() {
+    subrtpl.init && subrtpl.init(arguments);
+    var btn = document.querySelector('.click');
+    btn.addEventListener('click', (e)=> {
+      alert(e.target.innerHTML);
+    });
+  }
+
 </script>
 <template>
   <div>
     <span>${data.a}</span><span>${data.b}</span>
-    <div>${plugin.add(1,2)}</div>
+    <div class="click">${plugin.add(1,2)}点我呀</div>
     ${
       subrtpl.render({
         data

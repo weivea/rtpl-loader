@@ -68,7 +68,8 @@ module.exports = {
       {
         test: /\.rtpl$/,
         use: ['babel-loader', 'rtpl-loader']
-      }
+      },
+      // .....其它loader
     ]
   }
 };
@@ -79,15 +80,14 @@ module.exports = {
 ```javascript
 var template = require('./index.rtpl');
 
-var html = template.render({
+document.body.innerHTML = template.render({
   data: {
     a: 1,
     b: 2
   }
 });
 
-console.log(html);
-document.body.innerHTML = html;
+template.init();
 ```
 
 
@@ -95,14 +95,21 @@ document.body.innerHTML = html;
 ```html
 <!-- index.rtpl -->
 <script>
+  import './index.less';
   import * as subrtpl from './index-sub.rtpl';
   import * as plugin from './plugin';
   var list = [1,2,3]
+  export function init() {
+    var btn = document.querySelector('.click');
+    btn.addEventListener('click', (e)=> {
+      alert(e.target.innerHTML);
+    });
+  }
 </script>
 <template>
   <div>
     <span>${data.a}</span><span>${data.b}</span>
-    <div>${plugin.add(1,2)}</div>
+    <div class="click">${plugin.add(1,2)}点我呀</div>
     ${
       subrtpl.render({
         data
@@ -115,13 +122,6 @@ document.body.innerHTML = html;
         </template>
       }).join('\n')
     }
-    <div>
-      ${
-        (()=>{
-          return '想怎么写就怎么写';
-        })()
-      }
-    </div>
   </div>
 </template>
 
@@ -133,3 +133,6 @@ document.body.innerHTML = html;
   </ul>
 </template>
 ```
+
+### 高级用法
+

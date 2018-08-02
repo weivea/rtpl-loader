@@ -18,8 +18,8 @@ module.exports = {
       {
         test: /\.rtpl$/,
         use: ['babel-loader', '../rtpl-loader']
-      }
-      /* {
+      },
+      {
         test: /\.css$/,
         use: [ 
           'style-loader',
@@ -69,7 +69,7 @@ module.exports = {
             }
           }
         ]
-      } */
+      }
     ]
   }
 };

@@ -10,3 +10,5 @@ var html = template.render({
 console.log(html);
 
 document.body.innerHTML = html;
+
+template.init();

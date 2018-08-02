@@ -6,7 +6,7 @@ module.exports  = function(src){
   })
   src = src.replace(/[\n\s]{0,}<[/]{0,1}template>[\n]{0,1}/g, '`')
   src = src.replace(/[\s]{2,}/g, ' ')
-  const funStr = scripts.join('\n')+'\nfunction render( opt ) {var data = opt.data; return ' + src + '}; export {render}';
+  const funStr = scripts.join('\n')+'\nexport function render( opt ) {var data = opt.data; return ' + src + '};';
   console.log(funStr);
   console.log('-----------------------');
   return funStr;

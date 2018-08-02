@@ -1,5 +1,5 @@
 import * as plugin from './plugin';
-function render( opt ) {var data = opt.data; return
+export function render( opt ) {var data = opt.data; return
 
   `  <div>
       <span>${data.a}</span><span>${data.b}</span>
@@ -9,4 +9,4 @@ function render( opt ) {var data = opt.data; return
           data
         })
       }
-    </div>`}; export {render}
+    </div>`}; 
